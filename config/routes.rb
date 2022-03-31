@@ -1,8 +1,30 @@
 Rails.application.routes.draw do
+   root to: 'public#homes'
+   post 'customers/confirm' => 'public/customers#confirm'
+   patch 'cutomers/withdraw' => 'public/customers#withdraw'
+   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
+   get 'orders/thanks' => 'public/orders#thanks'
+   
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+scope module: :public do
+  resources :customers,only: [:show, :edit,:update]
+end 
+
+scope module: :public do
+  resources :cart_items,only:[:index,:update,:destroy,:create]
+end 
+
+scope module: :public do
+  resources :orders, only:[:new,:show,:index,:create]
+end
+
+scope module: :public do
+  resources :addresses, except:[:new,:show]
+end 
 
 # 管理者用
 # URL /admin/sign_in ...
