@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-   root to: 'public#homes'
+   root to: 'public/homes#top'
    post 'customers/confirm' => 'public/customers#confirm'
    patch 'cutomers/withdraw' => 'public/customers#withdraw'
    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
    get 'orders/thanks' => 'public/orders#thanks'
+   get 'about' => 'public/homes#about'
    
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
