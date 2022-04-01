@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 }
 
 scope module: :public do
+  resources :items,only: [:index,:show]
+end 
+
+scope module: :public do
   resources :customers,only: [:show, :edit,:update]
 end 
 

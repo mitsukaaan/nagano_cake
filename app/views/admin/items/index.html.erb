@@ -1,0 +1,17 @@
+<h1>商品一覧</h1>
+  <% @items.each do |item| %>
+
+<h2>商品ID</h2>
+  <%= item.id %>
+
+<h2>商品名</h2>
+  <%= item.name %>
+
+<h2>税抜価格</h2>
+  <%= item.price %>
+
+<h2>ジャンル</h2>
+  
+<h2>ステータス</h2>
+
+<% end %>

@@ -13,7 +13,8 @@
   <%#= f.collection_select (@genre.name){include_blank: '---選択してください---'} %>
   
 <h2>税抜価格</h2>
-
+  <%= f.text_field:price %>円
+  
 <h2>販売ステータス</h2>
   
 <%= f.submit '新規登録' %>
