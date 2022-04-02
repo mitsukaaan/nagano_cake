@@ -1,3 +1,10 @@
 <h1>商品一覧（全<%= @items.count %>件）</h1>
+<% @items.each do |item| %>
 
+<h2>商品名</h2>
+<%= item.name %>
+<%= item.price %>
 
+<% end %>
+
+<%= link_to "ログアウト",destroy_customer_session_path,method: :delete %>
