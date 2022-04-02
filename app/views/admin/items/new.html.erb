@@ -5,17 +5,17 @@
 
 <h2>商品名</h2>
   <%= f.text_field:name %>
-  
+
 <h2>商品説明</h2>
   <%= f.text_field:introduction %>
-  
+
 <h2>ジャンル</h2>
-  <%#= f.collection_select (@genre.name){include_blank: '---選択してください---'} %>
-  
+  <%= f.collection_select(:genre_id,@genre,:id,:name, include_blank: '---選択してください---' ) %>
+
 <h2>税抜価格</h2>
   <%= f.text_field:price %>円
-  
+
 <h2>販売ステータス</h2>
-  
+
 <%= f.submit '新規登録' %>
 <% end %>
