@@ -2,8 +2,13 @@
 <% @items.each do |item| %>
 
 <h2>商品名</h2>
+<% if item.image.attached? %>
+ <%= image_tag item.image,size:"300x200" %>
+<% else %>
+ <%= image_tag 'no image.png',size:"300x200" %>
+<% end %>
 <%= item.name %>
-<%= item.price %>
+¥<%= item.price %>
 
 <% end %>
 

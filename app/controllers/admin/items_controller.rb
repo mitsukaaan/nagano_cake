@@ -7,6 +7,8 @@ class Admin::ItemsController < ApplicationController
 
     def index
         @items = Item.all
+        @genre = Genre.name
+
     end
 
     def create
@@ -15,8 +17,7 @@ class Admin::ItemsController < ApplicationController
         redirect_to '/admin/items'
     end
 
-    def show
-    end
+   
 
     def edit
     end

@@ -2,6 +2,7 @@
  <%= form_with model:@item,url:admin_items_path do |f| %>
 
 <h2>商品画像</h2>
+  <%= f.file_field :image,accept:"image/*" %>
 
 <h2>商品名</h2>
   <%= f.text_field:name %>
@@ -16,6 +17,7 @@
   <%= f.text_field:price %>円
 
 <h2>販売ステータス</h2>
+  <%= f.select :is_active, [['販売中',true],['販売休止中',false]] %>
 
 <%= f.submit '新規登録' %>
 <% end %>

@@ -10,14 +10,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
-      t.string :last_name
-      t.string :first_name
-      t.string :last_name_kana
-      t.string :first_name_kana
-      t.string :postal_cade
-      t.string :address
-      t.boolean :is_deleted ,default:false
-      t.string :telephone_number
+      t.string :last_name, :null => false
+      t.string :first_name,:null => false
+      t.string :last_name_kana, :null => false
+      t.string :first_name_kana, :null => false
+      t.string :postal_code, :null => false
+      t.string :address, :null => false
+      t.boolean :is_deleted ,default:false, :null => false
+      t.string :telephone_number, :null => false
 
       ## Rememberable
       t.datetime :remember_created_at

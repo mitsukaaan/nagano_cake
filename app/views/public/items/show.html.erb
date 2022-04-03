@@ -1,0 +1,12 @@
+
+<% if @item.image.attached? %>
+  <%= image_tag @item.image,size:"300x200" %>
+<% else %>
+  <%= image_tag 'no image_png' ,size:"300x200" %>
+<% end %>
+
+ <%= @item.name %>
+ <%= @item.introduction %>
+ ¥<%= @item.price %>(税込）
+ <%= f.select :amount,[['1','2','3']] %>
+
