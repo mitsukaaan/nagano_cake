@@ -10,4 +10,12 @@ class Public::AddressesController < ApplicationController
 
     def edit
     end
+
+    def create
+        address = Address.new(address_params)
+        address.save
+        redirect_to address_path
+    end
+
+
 end

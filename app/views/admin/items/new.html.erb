@@ -17,7 +17,10 @@
   <%= f.text_field:price %>円
 
 <h2>販売ステータス</h2>
-  <%= f.select :is_active, [['販売中',true],['販売休止中',false]] %>
+  <%= f.radio_button:is_active,:true %><%= f.label:"販売中" %>
+  <%= f.radio_button:is_active,:false %><%= f.label:"販売休止中" %>
+
+
 
 <%= f.submit '新規登録' %>
 <% end %>

@@ -32,7 +32,7 @@ scope module: :public do
 end
 
 scope module: :public do
-  resources :addresses, except:[:new,:show]
+  resources :addresses, except:[:show]
 end
 
 # 管理者用

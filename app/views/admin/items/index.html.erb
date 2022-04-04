@@ -1,5 +1,6 @@
 <h1>商品一覧</h1>
   <% @items.each do |item| %>
+  <% @genres.each do |genre| %>
 
 <h2>商品ID</h2>
   <%= item.id %>
@@ -11,9 +12,10 @@
   <%= item.price %>円
 
 <h2>ジャンル</h2>
-  <%= @genre %>
+  <%= genre.name %>
 
 <h2>ステータス</h2>
 
+<% end %>
 <% end %>
 
