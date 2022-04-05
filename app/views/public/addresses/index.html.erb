@@ -7,3 +7,11 @@
 
 <%= f.submit"新規登録" %>
 <% end %>
+
+<% @addresses.each do |address| %>
+<span><%= address.postal_code %></span>
+<span><%= address.address %></span>
+<span><%= address.name %></span>
+<%#= link_to "編集する",edit_address_path(@address.id) %>
+<%#= link_to "削除する",address_path(@address.id),method: :delete,"data-confirm"=>"本当に削除しますか？"%>
+<% end %>
