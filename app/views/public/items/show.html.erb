@@ -8,5 +8,8 @@
  <%= @item.name %>
  <%= @item.introduction %>
  ¥<%= @item.price %>(税込）
- <%= f.select :amount,[['1','2','3']] %>
+
+ <%= form_with model :@cart_items do |f| %>
+ <%= f.select :cart_item.amount,{'1':1,'2':2,'3':3},{include_blank: '個数選択'} %>
+ <% end %>
 
