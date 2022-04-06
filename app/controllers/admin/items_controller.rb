@@ -8,7 +8,6 @@ class Admin::ItemsController < ApplicationController
     def index
         @items = Item.all
         @genres = Genre.all
-
     end
 
     def create
@@ -18,11 +17,15 @@ class Admin::ItemsController < ApplicationController
     end
 
     def show
+        @item = Item.find(params[:id])
+        @genre = @item.genre.name
     end
 
 
 
     def edit
+        @item = Item.find(params[:id])
+        @genre = Genre.all
     end
 
     def update
