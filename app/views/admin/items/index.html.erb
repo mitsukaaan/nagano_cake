@@ -1,4 +1,6 @@
 <h1>商品一覧</h1>
+  <%= link_to "＋","/admin/items/new" %>
+
   <% @items.each do |item| %>
   <% @genres.each do |genre| %>
 
@@ -6,7 +8,7 @@
   <%= item.id %>
 
 <h2>商品名</h2>
-  <%= item.name %>
+  <%= link_to item.name,"/admin/items/#{item.id}" %>
 
 <h2>税抜価格</h2>
   <%= item.price %>円
@@ -15,6 +17,11 @@
   <%= genre.name %>
 
 <h2>ステータス</h2>
+  <% if item.is_active == true %>
+   <span>販売中</span>
+  <% else %>
+   <span>販売休止中</span>
+  <% end %>
 
 <% end %>
 <% end %>

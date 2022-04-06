@@ -11,7 +11,7 @@
  ¥<%= @item.price %>(税込）
 
 
-  <%= if @item.is_active == true
+
    <%= f.hidden_field :customer_id, :value => current_customer %>
    <%= f.hidden_field :item_id, :value => @item.id %>
    <%= f.select :amount,*[1..10],{ include_blank: "数量選択"}  %>
