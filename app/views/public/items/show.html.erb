@@ -1,3 +1,4 @@
+<%= form_with model:@cart_item do |f| %>
 
 <% if @item.image.attached? %>
   <%= image_tag @item.image,size:"300x200" %>
@@ -9,7 +10,8 @@
  <%= @item.introduction %>
  ¥<%= @item.price %>(税込）
 
- <%= form_with model :@cart_items do |f| %>
- <%= f.select :cart_item.amount,{'1':1,'2':2,'3':3},{include_blank: '個数選択'} %>
+  <%= f.hidden_field :customer_id, :value => current_customer %>
+  <%= f.hidden_field :item_id, :value =>@item.id %>
+  <%= f.select :amount,[['1',1],['2',2],['3',3],['4',4],['5',5]]  %>
+  <%= f.submit "カートに入れる" %>
  <% end %>
-
