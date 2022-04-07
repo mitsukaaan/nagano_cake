@@ -6,7 +6,6 @@ Rails.application.routes.draw do
    patch 'customers' => 'public/customers#update'
    get 'customers/confirm' => 'public/customers#confirm'
    patch 'customers/withdraw' => 'public/customers#withdraw'
-
    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
    get 'orders/thanks' => 'public/orders#thanks'
@@ -44,7 +43,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 get 'admin' => 'admin/homes#top'
 
 namespace :admin do
-  resources :items,except: [:destroy]
+  resources :items,except: [:edit]
 end
 
 namespace :admin do
