@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
 
     def index
      @cart_items = current_customer.cart_items.all
-     @item = Item.all
+
 
     end
 
@@ -23,6 +23,12 @@ class Public::CartItemsController < ApplicationController
         cart_item = current_customer.cart_items.all
         cart_item.destroy_all
         redirect_to '/items'
+    end
+
+    def update
+        cart_item = CartItem.find(params[:id])
+        cart_item.update(cart_item_params)
+        redirect_to '/cart_items'
     end
 
     private

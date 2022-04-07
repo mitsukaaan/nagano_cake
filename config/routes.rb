@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
    get 'orders/thanks' => 'public/orders#thanks'
-   post 'orders/comfirm' =>'public/orders#comfirm'
+   post 'orders/confirm' =>'public/orders#confirm'
 
    get 'about' => 'public/homes#about'
 
@@ -27,7 +27,7 @@ scope module: :public do
 end
 
 scope module: :public do
-  resources :orders, only:[:new,:index,:create]
+  resources :orders, only:[:new,:index,:create,:show]
 end
 
 scope module: :public do

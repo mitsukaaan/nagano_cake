@@ -2,7 +2,6 @@ class Public::ItemsController < ApplicationController
 
     def index
       @items = Item.all
-      #@item.customer_id = current_customer.id
     end
 
     def show
