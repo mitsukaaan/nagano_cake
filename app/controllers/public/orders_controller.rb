@@ -10,10 +10,11 @@ class Public::OrdersController < ApplicationController
     end
 
     def confirm
+        @cart_items = current_customer.cart_items.all
     end
 
     def create
-        order = Order.new(order_params)
+        order = current_customer.orders.new(order_params)
         order.save
         redirect_to '/orders/confirm'
     end
@@ -25,10 +26,4 @@ class Public::OrdersController < ApplicationController
     def order_params
       params.require(:orders).permit(:customer_id,:name,:postal_code,:address,:payment_method)
     end
-
-
-
-
-
-
 end

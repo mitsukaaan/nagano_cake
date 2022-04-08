@@ -1,0 +1,32 @@
+<h1>注文確認画面</h1>
+　<% @total_price = 0 %>
+　<% @postage = 800 %>
+  <% @cart_items.each do |cart_item| %>
+  <%= form_with model:cart_item,url:cart_item_path(cart_item),method: :patch do |f| %>
+
+<h2>商品名</h2>
+  <%= cart_item.item.name %>
+
+<h2>単価(税込)</h2>
+  ¥<%= (cart_item.item.price*1.1).floor.to_s(:delimited) %>
+
+<h2>数量</h2>
+　<%= cart_item.amount %>
+
+<h2>小計</h2>
+  ¥<%= ((cart_item.item.price*1.1)*(cart_item.amount)).floor.to_s(:delimited) %>
+
+  <% @total_price += (cart_item.item.price*1.1)*(cart_item.amount) %>
+
+<% end %>
+<% end %>
+
+<h2>合計金額</h2>
+¥<%= (@total_price.floor).to_s(:delimited) %>
+
+<h2>請求額</h2>
+¥<%= (@total_price + @postage).floor.to_s(:delimited) %>
+
+<h2>支払い方法</h2>
+<%= @payment_method %>
+
