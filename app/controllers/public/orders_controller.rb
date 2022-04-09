@@ -11,6 +11,8 @@ class Public::OrdersController < ApplicationController
 
     def confirm
         @cart_items = current_customer.cart_items.all
+        @payment_method = Order.payment_methods_i18n[params[:order][:payment_method]]
+        @address = Address.all
     end
 
     def create
@@ -24,6 +26,6 @@ class Public::OrdersController < ApplicationController
 
 
     def order_params
-      params.require(:orders).permit(:customer_id,:name,:postal_code,:address,:payment_method)
+      params.require(:orders).permit(:customer_id,:name,:postal_code,:address,:payment_method,)
     end
 end
