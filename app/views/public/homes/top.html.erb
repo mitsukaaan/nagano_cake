@@ -6,3 +6,12 @@
 
 
 <h2>ジャンル検索</h2>
+
+<h2>新着商品</h2>
+　<% @items.each do |item| %>
+　<%= image_tag item.image,size:"300x200" %>
+　商品名<%= item.name %>
+　¥<%= (item.price).to_s(:delimited) %>
+　<% end %>
+
+　<%= link_to "全ての商品を見る",items_path %>

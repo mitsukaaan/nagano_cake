@@ -1,9 +1,11 @@
 class Public::HomesController < ApplicationController
-    
+
     def top
-    end 
-    
+        @items = Item.all
+        @items = Item.all.order(created_at: :desc).limit(3)
+    end
+
     def about
-    end 
-    
-end 
+    end
+
+end

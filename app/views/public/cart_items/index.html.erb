@@ -6,7 +6,7 @@
 
 <h2>商品名</h2>
  <% if cart_item.item.image.attached? %>
-  <%= image_tag cart_item.item.image,size:"200x200" %>
+  <%= image_tag cart_item.item.image,size:"200x200" %
  <% else %>
   <%= image_tag 'no image.png',size:"200x200" %>
  <% end %>
