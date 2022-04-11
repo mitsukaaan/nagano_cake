@@ -10,8 +10,9 @@ class Public::OrdersController < ApplicationController
 
     def confirm
         @cart_items = current_customer.cart_items.all
-        @payment_method = Order.payment_methods_i18n[params[:order][:payment_method]]
         @order = Order.new(order_params)
+        @payment_method = Order.payment_methods_i18n[params[:order][:payment_method]]
+
 
          if params[:order][:select_address]== "0"
           @order.postal_code = current_customer.postal_code
@@ -28,7 +29,9 @@ class Public::OrdersController < ApplicationController
 
     def create
         order = Order.new(order_params)
+        order.customer_id = current_customer.id
         order.save
+        redirect_to '/orders/thanks'
     end
 
     def thanks
@@ -43,6 +46,6 @@ class Public::OrdersController < ApplicationController
 
 
     def order_params
-      params.require(:order).permit(:customer_id,:name,:postal_code,:address,:payment_method)
+      params.require(:order).permit(:customer_id,:name,:postal_code,:address,:payment_method,:total_price,:postage)
     end
 end

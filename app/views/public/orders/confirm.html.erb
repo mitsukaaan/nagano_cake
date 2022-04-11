@@ -1,10 +1,9 @@
-
+<%= form_with model:@order,url:orders_thanks_path,method: :get do |f| %>
 
 <h1>注文確認画面</h1>
 　<% @total_price = 0 %>
 　<% @postage = 800 %>
   <% @cart_items.each do |cart_item| %>
-  <%= form_with model:cart_item,url:cart_item_path(cart_item),method: :patch do |f| %>
 
 <h2>商品名</h2>
   <%= cart_item.item.name %>
@@ -21,20 +20,25 @@
   <% @total_price += (cart_item.item.price*1.1)*(cart_item.amount) %>
 
 <% end %>
-<% end %>
+
+<% @total_price = @total_price.floor %>
+
+<%= f.hidden_field:total_price,:value =>@total_price %>
+<%= f.hidden_field:postage,:value => @postage %>
 
 <h2>合計金額</h2>
-¥<%= (@total_price.floor).to_s(:delimited) %>
+¥<%= @total_price.to_s(:delimited) %>
 
 <h2>請求額</h2>
-¥<%= (@total_price + @postage).floor.to_s(:delimited) %>
+¥<%= (@total_price + @postage).to_s(:delimited) %>
 
 <h2>支払い方法</h2>
-<%= @payment_method %>
+<%= f.text_field:payment_method %>
 
 <h2>お届け先</h2>
-<%= @order.address %>
-<%= @order.postal_code %>
-<%= @order.name %>
+<%= f.text_field:address %>
+<%= f.text_field:postal_code %>
+<%= f.text_field:name %>
 
-<%= link_to "注文を確定する",orders_thanks_path %>
+<%= f.submit "注文を確定する" %>
+<% end %>

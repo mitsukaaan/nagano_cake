@@ -1,2 +1,11 @@
 <h1>admin top</h1>
 <h2>注文履歴一覧</h2>
+<%= @orders.each do |order| %>
+
+<h4>購入日時</h4>
+  <%= order.created_at %>
+<h4>購入者</h4>
+  <%= order.customer.last_name + @order.customer.first_name %>
+<h4>注文個数</h4>
+  <%= order.cart_item.amount %>
+<% end %>

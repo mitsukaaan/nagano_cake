@@ -1,0 +1,15 @@
+<h2><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
+ <span><%= @customer.id %></span>
+ <span><%= @customer.last_name + @customer.first_name %></span>
+ <span><%= @customer.last_name_kana + @customer.first_name_kana %></span>
+ <span><%= @customer.postal_code %></span>
+ <span><%= @customer.address %></span>
+ <span><%= @customer.telephone_number %></span>
+ <span><%= @customer.email %></span>
+ <span><%= @customer.is_deleted %></span>
+
+ <%= link_to "編集する",edit_admin_customer_path(@customer.id) %>
+
+
+
+
