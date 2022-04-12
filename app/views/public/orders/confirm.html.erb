@@ -1,4 +1,4 @@
-<%= form_with model:@order,url:orders_thanks_path,method: :get do |f| %>
+<%= form_with model:@order do |f| %>
 
 <h1>注文確認画面</h1>
 　<% @total_price = 0 %>
@@ -33,12 +33,20 @@
 ¥<%= (@total_price + @postage).to_s(:delimited) %>
 
 <h2>支払い方法</h2>
-<%= f.text_field:payment_method %>
+<%= @order.payment_method_i18n %>
 
 <h2>お届け先</h2>
-<%= f.text_field:address %>
-<%= f.text_field:postal_code %>
-<%= f.text_field:name %>
+<%= @order.address %>
+<%= @order. postal_code %>
+<%= @order.name %>
+
+<%= f.hidden_field:payment_method %>
+<%= f.hidden_field:name %>
+<%= f.hidden_field:postal_code %>
+<%= f.hidden_field:address %>
+<%= f.hidden_field:postage,:value => @postage %>
+<%= f.hidden_field:total_price,:value => @total_price %>
+<%= f.hidden_field:customer_id,:value => @customer_id %>
 
 <%= f.submit "注文を確定する" %>
 <% end %>

@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     def confirm
         @cart_items = current_customer.cart_items.all
         @order = Order.new(order_params)
-        @payment_method = Order.payment_methods_i18n[params[:order][:payment_method]]
+
 
 
          if params[:order][:select_address]== "0"
@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
         order = Order.new(order_params)
         order.customer_id = current_customer.id
         order.save
-        redirect_to '/orders/thanks'
+        redirect_to orders_thanks_path
     end
 
     def thanks
@@ -39,6 +39,8 @@ class Public::OrdersController < ApplicationController
 
     def index
         @orders = Order.all
+        @cart_item = current_customer.cart_items.all
+
     end
 
 
