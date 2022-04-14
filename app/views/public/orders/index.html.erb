@@ -7,6 +7,7 @@
  <%  order.order_details.each do |order_detail|  %>
  <%= order_detail.item.name %>
  <% end %>
+ <span><%= order.total_price.to_s(:delimited) %></span>
  <span><%= order.status_i18n %></span>
- <spn><%= order.total_price.to_s(:delimited) %></spn>
+ <%= link_to "表示する","/orders/#{order.id}" %>
  <% end %>

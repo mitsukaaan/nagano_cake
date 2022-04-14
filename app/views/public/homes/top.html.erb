@@ -1,30 +1,56 @@
+<div class="container">
+  <header>
+   <div class = "row border-bottom">
+    <h3 class="col-xl-5 font-italic text-left">
+     <%= image_tag('nagano_cake.jpeg') %>
+    </h3>
+
+    <div class="col-xl-7 text-right font-italic">
+      <a class= "d-inline-block m-4">
+       <%= link_to "About",about_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Items",items_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to"Sign in",new_customer_registration_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Log in",new_customer_session_path %>
+      </a>
+    </header>
+   </div>
+  </div>
+</div>
 
 
+<div class ="row">
+  <div class = "col-xl-2 text-center mt-5">
+   <h4>ジャンル検索</h4>
+  </div>
+
+  <div class= "col-xl-10 text-center m-5" >
+    <a>ようこそ、ながのCAKEへ！<br>
+       このサイトは、ケーキ販売のECサイトになります。<br>
+       会員でない方も商品の閲覧はできますが、<br>
+       購入には会員登録が必要になります。
+    </a>
+   </div>
+</div>
 
 
-
-
-
-
-
-<h1>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-</h1>
-
-
-<h2>ジャンル検索</h2>
-
-<h2>新着商品</h2>
-　<% @items.each do |item| %>
-　<%= image_tag item.image,size:"300x200" %>
-　商品名<%= item.name %>
-　¥<%= (item.price).to_s(:delimited) %>
-　<% end %>
-
+ 　<div class= "row flex-row-reserve">
+      　　　<h4>新着商品</h4>
+   　　　　　　　<div class = "col-xl-2">
+    　　　　　　<p>
+   　　　　　　　<% @items.each do |item| %>
+　  　 　　　<%= image_tag item.image,size:"200x150" %><br>
+　    　　　 <%= item.name %><br>
+　   　　　　¥<%= (item.price).to_s(:delimited) %>
+  　　　　　　　　<% end %>
+  　　　　　　　　</p>
+  　　　　　　</div>
+</div>
 　<%= link_to "全ての商品を見る",items_path %>
 
-　<%= link_to about_path do %>
-  <i class="fas fa-home"></i>About
-  <% end %>
+

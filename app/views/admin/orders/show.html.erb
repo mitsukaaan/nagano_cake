@@ -1,0 +1,40 @@
+<%= form_with model:@order,url:admin_order_path,method: :patch do |f| %>
+<h1>注文履歴詳細</h1>
+ <h3>購入者</h3>
+ <%= @order.customer.last_name + @order.customer.first_name %>
+
+ <h3>注文日</h3>
+ <%= @order.created_at %>
+
+ <h3>配送先</h3>
+ 〒<%= @order.postal_code %>
+ <%= @order.address %>
+ <%= @order.name %>
+
+ <h3>支払方法</h3>
+ <%= @order.payment_method_i18n %>
+
+ <h3>注文ステータス</h3>
+ <%= f.select :status,Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+ <%= f.submit "更新" %>
+
+ <% end %>
+
+
+
+ <% @order.order_details.each do |order_detail| %>
+ <h3>商品名</h3>
+  <%= order_detail.item.name %>
+
+ <h3>単価（税込）</h3>
+  <%= order_detail.price.to_s(:delimited) %>
+
+ <h3>数量</h3>
+  <%= order_detail.amount %>
+
+ <h3>小計</h3>
+  <%= (order_detail.price*1.1).floor.to_s(:delimited) %>
+
+ <h3>製作ステータス</h3>
+
+ <% end %>

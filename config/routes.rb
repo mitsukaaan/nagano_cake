@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
    root to: 'public/homes#top'
-   
+
 
    get 'customers/my_page' => 'public/customers#show'
    get 'customers/edit' => 'public/customers#edit'
@@ -56,7 +56,7 @@ namespace :admin do
 end
 
 namespace :admin do
-  resources :orders,only: [:show,:uodate]
+  resources :orders,only: [:show,:update,:index]
 end
 
 namespace :admin do
