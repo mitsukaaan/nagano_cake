@@ -15,13 +15,18 @@ class Public::CustomersController < ApplicationController
     end
 
     def confirm
+        @is_active = current_customer.is_active
     end
 
-
+    def withdraw
+        customer = current_customer
+        customer.update(is_active: false)
+        redirect_to root_path
+    end
 
 
     private
     def customer_params
-        params.require(:customer).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number)
+        params.require(:customer).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:is_active)
     end
 end

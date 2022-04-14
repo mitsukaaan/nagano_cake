@@ -6,7 +6,11 @@
  <span><%= @customer.address %></span>
  <span><%= @customer.telephone_number %></span>
  <span><%= @customer.email %></span>
- <span><%= @customer.is_deleted %></span>
+ <span><% if @customer.is_active == true %></span>
+ 有効
+ <% else %>
+ 退会
+ <% end %>
 
  <%= link_to "編集する",edit_admin_customer_path(@customer.id) %>
 

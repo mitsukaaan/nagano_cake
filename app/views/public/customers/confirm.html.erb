@@ -4,4 +4,9 @@
 退会する場合は、「退会する」をクリックしてください。<br>
 </h2>
 
-<%= link_to "退会しない",customers_edit_path %><%= link_to "退会する",root_path %>
+<%= link_to "退会しない",customers_edit_path %>
+<%= form_with model:@customer,url:customers_withdraw_path,method: :patch do |f| %>
+ <%= f.hidden_field:is_active,:value => @is_active %>
+
+<%= f.submit "退会する" %>
+<% end %>

@@ -2,6 +2,7 @@ class Admin::CustomersController < ApplicationController
 
     def index
         @customers = Customer.all
+
     end
 
 
@@ -20,7 +21,7 @@ class Admin::CustomersController < ApplicationController
     end
 
     def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:postal_code,:address,:last_name_kana,:first_name_kana,:telephone_number,:email,:is_deleted)
+    params.require(:customer).permit(:last_name,:first_name,:postal_code,:address,:last_name_kana,:first_name_kana,:telephone_number,:email,:is_active)
     end
 
 end

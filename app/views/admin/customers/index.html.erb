@@ -3,5 +3,10 @@
    <%= customer.id %>
    <%= link_to customer.last_name + customer.first_name,admin_customer_path(customer.id) %>
    <%= customer.email %>
-   <%= customer.is_deleted %>
+   <% if customer.is_active == true %>
+     <span>有効</span>
+    <% else %>
+     <span>退会</span>
+    <% end %>
+
    <% end %>
