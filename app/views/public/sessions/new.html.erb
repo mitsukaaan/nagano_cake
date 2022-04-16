@@ -1,7 +1,38 @@
-<h2>ログイン</h2>
- <h3>会員の方はこちらからログイン</h3>
+<div class ="container">
+<header>
+   <div class = "row border-bottom">
+    <h3 class="col-xl-5 text-center">
+     <%= image_tag('nagano_cake.jpeg') %>
+    </h3>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="col-xl-7 text-center font-italic">
+      <a class= "d-inline-block m-4">
+       <%= link_to "About",about_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Items",items_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to"Sign up",new_customer_registration_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Log in",new_customer_session_path %>
+      </a>
+    </header>
+   </div>
+  </div>
+
+
+<div class ="row">
+  <div class = "col-12 text-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class ="log in btn btn-outline-secondary">
+    <h4>ログイン</h4>
+  </div>
+
+  <h5>会員の方はこちらからログイン</h5>
+
   <div class="field">
     <%= f.label :メールアドレス　%>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,5 +54,10 @@
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
+</div>
 
-<%= render "public/shared/links" %>
+ <div class ="col-12 text-center mt-5">
+   <h5>会員登録がお済みでない方</h5>
+  　<%= link_to "こちら",new_customer_registration_path %>から新規登録を行なってください。
+ </div>
+</div>

@@ -1,37 +1,16 @@
-<header>
-   <div class = "row border-bottom">
-    <h3 class="col-xl-5 text-center">
-     <%= image_tag('nagano_cake.jpeg') %>
-    </h3>
+<div class ="container">
+<%= render 'header',homes: @homes %>
 
-    <div class="col-xl-7 text-center font-italic">
-      <a class= "d-inline-block m-4">
-       <%= link_to "About",about_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to "Items",items_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to"Sign in",new_customer_registration_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to "Log in",new_customer_session_path %>
-      </a>
-    </header>
-   </div>
-  </div>
-</div>
 
- <div class= "row">
-   <div class="col-xl-12 text-center">
+
       <div class= "about-image">
        <h1>About</h1>
-        <h2>ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+        <h3>ながのCAKEは全国発送可能なケーキ屋さんです。<br>
         お子様からお年寄りの方までお召し上がり」いただけるよう、<br>
         さまざまなバリエーションをご用意しております。<br>
         また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
         ぜひご注文ください!
-        </h2>
-     </div>
-    </div>
+        </h3>
+
+      </div>
  </div>

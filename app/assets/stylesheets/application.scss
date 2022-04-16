@@ -14,5 +14,12 @@
  *= require_self
  */
 .about-image {
-    background-image: url("latte.jpeg")
+    background-image: url('latte.jpeg');
+    background-size: cover;
+    height:800px;
+    opacity: 0.7;
+    h1,h3 {
+        color: white;
+        text-align: center;
+    }
 }
