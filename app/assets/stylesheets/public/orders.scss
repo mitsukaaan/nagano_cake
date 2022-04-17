@@ -1,3 +1,23 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.order-info {
+    margin:0 auto;
+    width: 1000px;
+}
+.action {
+    text-align:center;
+}
+
+h2{
+    text-align:center;
+}
+
+.thanks {
+    text-align:center;
+    padding-top:300px;
+}
+
+label {
+    width:500px;
+}

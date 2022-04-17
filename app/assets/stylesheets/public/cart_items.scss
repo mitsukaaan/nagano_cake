@@ -1,3 +1,17 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+table {
+    width:1000px;
+    margin:0 auto;
+}
+
+.total_price {
+    width:300px;
+}
+
+div {
+    margin-top:30px;
+    width:1000px;
+    text-align:right;
+}

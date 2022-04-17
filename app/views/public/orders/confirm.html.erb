@@ -1,36 +1,57 @@
+<%= render'public/homes/header',homes: @homes %>
+
 <%= form_with model:@order do |f| %>
+<% @total_price = 0 %>
+<% @postage = 800 %>
+<h2>注文情報確認</h2>
 
-<h1>注文確認画面</h1>
-　<% @total_price = 0 %>
-　<% @postage = 800 %>
-  <% @cart_items.each do |cart_item| %>
+ <table border ="1">
+   <tr>
+     <th>商品名</th>
+     <th>単価（税抜）</th>
+     <th>数量</th>
+     <th>小計</th>
+   </tr>
 
-<h2>商品名</h2>
-  <%= cart_item.item.name %>
+   <% @cart_items.each do |cart_item| %>
+   <tr>
+     <td><% if cart_item.item.image.attached? %>
+       <%= image_tag cart_item.item.image,size:"150x100" %>
+       <% else %>
+       <%= image_tag 'no image.png',size:"200x200" %>
+       <% end %><%= cart_item.item.name %></td>
+     <td>¥<%= (cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
+     <td><%= cart_item.amount %></td>
+     <td>¥<%= ((cart_item.item.price*1.1)*(cart_item.amount)).floor.to_s(:delimited) %></td>
+   </tr>
+    <% @total_price += (cart_item.item.price*1.1)*(cart_item.amount) %>
+  <% end %>
+ </table>
 
-<h2>単価(税込)</h2>
-  ¥<%= (cart_item.item.price*1.1).floor.to_s(:delimited) %>
+ <%= f.hidden_field:total_price,:value =>@total_price %>
+ <%= f.hidden_field:postage,:value => @postage %>
 
-<h2>数量</h2>
-　<%= cart_item.amount %>
 
-<h2>小計</h2>
-  ¥<%= ((cart_item.item.price*1.1)*(cart_item.amount)).floor.to_s(:delimited) %>
+ <table>
+   <tr>
+     <td>送料</td>
+     <td><%= @postage %></td>
+   </tr>
 
-  <% @total_price += (cart_item.item.price*1.1)*(cart_item.amount) %>
+   <tr>
+     <td>商品合計</td>
+     <% @total_price = @total_price.floor %>
+     <td>¥<%= @total_price.to_s(:delimited) %></td>
+   </tr>
 
-<% end %>
+   <tr>
+     <td>請求金額</td>
+     <td>¥<%= (@total_price + @postage).to_s(:delimited) %></td>
+   </tr>
+ </table>
 
-<% @total_price = @total_price.floor %>
 
-<%= f.hidden_field:total_price,:value =>@total_price %>
-<%= f.hidden_field:postage,:value => @postage %>
 
-<h2>合計金額</h2>
-¥<%= @total_price.to_s(:delimited) %>
-
-<h2>請求額</h2>
-¥<%= (@total_price + @postage).to_s(:delimited) %>
 
 <h2>支払い方法</h2>
 <%= @order.payment_method_i18n %>
@@ -48,5 +69,5 @@
 <%= f.hidden_field:total_price,:value => @total_price %>
 <%= f.hidden_field:customer_id,:value => @customer_id %>
 
-<%= f.submit "注文を確定する" %>
+<%= f.submit "注文を確定する",class:"btn btn-success" %>
 <% end %>
