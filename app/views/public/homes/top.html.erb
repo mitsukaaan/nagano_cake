@@ -1,12 +1,11 @@
-<div class ="container">
 <%= render 'header',homes: @homes %>
 
 
-    <h3>ようこそ、ながのCAKEへ！<br>
+    <div class="intro">ようこそ、ながのCAKEへ！<br>
        このサイトは、ケーキ販売のECサイトになります。<br>
        会員でない方も商品の閲覧はできますが、<br>
        購入には会員登録が必要になります。
-    </h3>
+    </div>
 
     <h4>新着商品</h4>
      <div class = "item-image">
@@ -14,11 +13,13 @@
    　　　<div>
 　  　    <%= image_tag item.image,size:"200x150" %>
 　        <p><%= item.name %></p>
-　   　   <p><%= (item.price).to_s(:delimited) %></p>
+　   　   <p>¥<%= (item.price).to_s(:delimited) %></p>
 　   　</div>
        <% end %>
-
     </div>
-　<%= link_to "全ての商品を見る",items_path %>
+
+　<div class ="all-items-show">
+　  <%= link_to "全ての商品を見る",items_path %>
+　</div>
 </div>
 

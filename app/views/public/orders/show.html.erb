@@ -1,26 +1,74 @@
-<h1>注文履歴詳細</h1>
+<%= render'public/homes/header',homes: @homes %>
+<h2>注文履歴詳細</h2>
 
-<span>注文情報</span>
-<a>注文日</a>
-<span><%= @order.created_at %></span>
+  <table border="1" class="order-show-info">
+    <tr>
+     <th>注文情報</th>
+    </tr>
 
-<a>配送先</a>
-<span>〒<%= @order.postal_code %></span>
-<span><%= @order.address %></span>
-<span><%= @order.name %></span>
+    <tr>
+     <td>注文日</td>
+     <td><%= @order.created_at %></td>
+    </tr>
 
-<a>支払い方法</a>
-<span><%= @order.payment_method_i18n %></span>
+    <tr>
+     <td>配送先</td>
+     <td>〒<%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %></td>
+    </tr>
 
-<a>ステータス</a>
-<span><%= @order.status_i18n %></span>
+    <tr>
+     <td>支払方法</td>
+     <td><%= @order.payment_method_i18n %></td>
+    </tr>
 
-<span>請求情報</span>
- <span><%= @order.total_price.to_s(:delimited) %></span>
- <span><%= @order.postage %></span>
- <span><%=(@order.total_price + @order.postage).to_s(:delimited) %></span>
+    <tr>
+     <td>ステータス</td>
+     <td><%= @order.status_i18n %></td>
+    </tr>
+  </table>
 
- <span>注文内容</span>
- <%  @order.order_details.each do |order_detail|  %>
- <%= order_detail.item.name %>
- <% end %>
+  <table border="1" class="order-price">
+   <tr>
+    <th>請求情報</th>
+   </tr>
+
+   <tr>
+    <td>商品合計</td>
+    <td><%= @order.total_price.to_s(:delimited) %></td>
+   </tr>
+
+   <tr>
+    <td>配送料</td>
+    <td><%= @order.postage %></td>
+   </tr>
+
+   <tr>
+    <td>ご請求額</td>
+    <td><%=(@order.total_price + @order.postage).to_s(:delimited) %></td>
+   </tr>
+  </table>
+
+  <table border="1" class="order-item">
+   <tr>
+    <th>注文情報</th>
+   </tr>
+
+   <tr>
+    <th>商品</th>
+    <th>単価（税込）</th>
+    <th>個数</th>
+    <th>小計</th>
+   </tr>
+
+   <%  @order.order_details.each do |order_detail|  %>
+   <tr>
+    <td><%= order_detail.item.name %></td>
+    <td><%= order_detail.price %></td>
+    <td><%= order_detail.amount %></td>
+    <td><%= (order_detail.price*order_detail.amount).floor %></td>
+   </tr>
+   <% end %>
+  </table>
+

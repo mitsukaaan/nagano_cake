@@ -1,24 +1,24 @@
-<div class ="container">
+
  <%= render'public/homes/header',homes: @homes %>
 
 
-<a class ="item-show">
+<div class ="item-show">
     <%= form_with model:@cart_item do |f| %>
     <% if @item.image.attached? %>
     <%= image_tag @item.image,size:"400x300" %>
     <% else %>
     <%= image_tag 'no image_png' ,size:"300x200" %>
     <% end %>
-</a>
+</div>
 
-   <a><strong><%= @item.name %></strong></a><br>
-   <a><%= @item.introduction %></a><br>
-   <a><strong>¥<%= @item.price.to_s(:delimited) %>(税抜）</strong></a><br>
-   <a><%= f.hidden_field :customer_id, :value => current_customer %></a>
-   <a><%= f.hidden_field :item_id, :value => @item.id %></a>
-   <a><%= f.select :amount,*[1..10],{ include_blank: "数量選択"}  %></a>
-   <a><%= f.submit "カートに入れる",class:"btn btn-success" %></a>
+   <div class ="show-item-name">
+     <strong><%= @item.name %></strong><br>
+     <%= @item.introduction %><br>
+     ¥<%= @item.price.to_s(:delimited) %>(税抜）<br>
+     <%= f.hidden_field :customer_id, :value => current_customer %>
+     <%= f.hidden_field :item_id, :value => @item.id %>
+     <%= f.select :amount,*[1..10],{ include_blank: "数量選択"}  %>
+     <%= f.submit "カートに入れる",class:"btn btn-success" %>
+  </div>
   <% end %>
 
-
-</div>

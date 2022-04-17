@@ -1,13 +1,30 @@
-<h1>注文履歴一覧</h1>
-<% @orders.each do |order| %>
- <span><%= order.created_at %></span>
- <span><%= order.postal_code %></span>
- <span><%= order.address %></span>
- <span><%= order.name %></span>
- <%  order.order_details.each do |order_detail|  %>
- <%= order_detail.item.name %>
- <% end %>
- <span><%= order.total_price.to_s(:delimited) %></span>
- <span><%= order.status_i18n %></span>
- <%= link_to "表示する","/orders/#{order.id}" %>
- <% end %>
+<%= render'public/homes/header',homes: @homes %>
+ <h2>注文履歴一覧</h2>
+
+ <table border="1" class="orders-index">
+  <tr>
+   <th>注文日</th>
+   <th>配送先</th>
+   <th>注文商品</th>
+   <th>支払金額</th>
+   <th>ステータス</th>
+   <th>注文詳細</th>
+  </tr>
+
+  <tr>
+   <% @orders.each do |order| %>
+   <td><%= order.created_at.to_s(:datetime_jp) %></td>
+   <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
+   <td><%  order.order_details.each do |order_detail|  %>
+ 　　　　　<%= order_detail.item.name %>
+ 　　　　　<% end %></td>
+   <td><%= order.total_price.to_s(:delimited) %></td>
+   <td><%= order.status_i18n %></td>
+   <td><%= link_to "表示する","/orders/#{order.id}" %></td>
+  </tr>
+  <% end %>
+ </table>
+
+
+
+

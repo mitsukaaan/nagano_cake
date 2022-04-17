@@ -5,7 +5,7 @@
 <% @postage = 800 %>
 <h2>注文情報確認</h2>
 
- <table border ="1">
+ <table border ="1" class= "confirm-table">
    <tr>
      <th>商品名</th>
      <th>単価（税抜）</th>
@@ -16,7 +16,7 @@
    <% @cart_items.each do |cart_item| %>
    <tr>
      <td><% if cart_item.item.image.attached? %>
-       <%= image_tag cart_item.item.image,size:"150x100" %>
+       <%= image_tag cart_item.item.image,size:"90x70" %>
        <% else %>
        <%= image_tag 'no image.png',size:"200x200" %>
        <% end %><%= cart_item.item.name %></td>
@@ -32,7 +32,7 @@
  <%= f.hidden_field:postage,:value => @postage %>
 
 
- <table>
+ <table border="1" class ="price-table">
    <tr>
      <td>送料</td>
      <td><%= @postage %></td>
@@ -50,16 +50,15 @@
    </tr>
  </table>
 
+<div class ="customer-info">
+  <a><strong>支払方法</strong>
+  <%= @order.payment_method_i18n %>
+   </a><br>
 
-
-
-<h2>支払い方法</h2>
-<%= @order.payment_method_i18n %>
-
-<h2>お届け先</h2>
-<%= @order.address %>
-<%= @order. postal_code %>
-<%= @order.name %>
+   <a><strong>お届け先</strong>
+  〒<%= @order. postal_code %><%= @order.address %>
+  <%= @order.name %>
+  </a><br>
 
 <%= f.hidden_field:payment_method %>
 <%= f.hidden_field:name %>
@@ -69,5 +68,8 @@
 <%= f.hidden_field:total_price,:value => @total_price %>
 <%= f.hidden_field:customer_id,:value => @customer_id %>
 
-<%= f.submit "注文を確定する",class:"btn btn-success" %>
-<% end %>
+  <a class ="order-action">
+  <%= f.submit"注文を確定する",class:"btn btn-success" %>
+  </a>
+ <% end %>
+ </div>

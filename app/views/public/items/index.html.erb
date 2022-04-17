@@ -1,42 +1,21 @@
-<div class ="container">
-<header>
-   <div class = "row border-bottom">
-    <h3 class="col-xl-5 text-center">
-     <%= image_tag('nagano_cake.jpeg') %>
-    </h3>
+<%= render'public/homes/header',homes: @homes %>
 
-    <div class="col-xl-7 text-center font-italic">
-      <a class= "d-inline-block m-4">
-       <%= link_to "About",about_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to "Items",items_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to"Sign up",new_customer_registration_path %>
-      </a>
-      <a class="d-inline-block m-4">
-       <%= link_to "Log in",new_customer_session_path %>
-      </a>
-    </header>
-   </div>
+ <h1>商品一覧（全<%= @items.count %>件）</h1>
+
+<div class ="item-image">
+  <% @items.each do |item| %>
+   <div>
+     <% if item.image.attached? %>
+     <%= image_tag item.image,size:"300x200" %>
+     <% else %>
+     <%= image_tag 'no image.png',size:"300x200" %>
+     <% end %>
+     <p><%= link_to item.name,"/items/#{item.id}" %></p>
+     <p>¥<%= item.price.to_s(:delimited) %></p>
   </div>
-
-<div class ="row">
- <div class ="col-12 text-center">
- <h1>商品一覧（全<%= @items.count %>件）</h1></div>
- </div>
-
-<% @items.each do |item| %>
-<% if item.image.attached? %>
- <%= image_tag item.image,size:"300x200" %>
-<% else %>
- <%= image_tag 'no image.png',size:"300x200" %>
-<% end %>
-<%= link_to item.name,"/items/#{item.id}" %>
-¥<%= item.price.to_s(:delimited) %>
-<% end %>
+ <% end %>
+</div>
 
 <%= link_to "ログアウト",destroy_customer_session_path,method: :delete %>
 
-</div>
+

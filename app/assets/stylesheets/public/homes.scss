@@ -1,11 +1,26 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-h3 {
+.intro {
     text-align: center;
+    font-size:30px;
 }
 
 .item-image {
     display:flex;
      flex-wrap:wrap;
+}
+.all-items-show {
+    text-align:right;
+}
+
+.about-image {
+    background-image: url('latte.jpeg');
+    background-size: cover;
+    height:800px;
+    opacity: 0.7;
+    h1,h3 {
+        color: white;
+        text-align: center;
+    }
 }
