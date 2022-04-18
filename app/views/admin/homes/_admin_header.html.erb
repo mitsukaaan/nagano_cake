@@ -1,0 +1,27 @@
+<div class="container">
+  <header>
+   <div class = "row border-bottom">
+    <h3 class="col-xl-5 font-italic text-left">
+     <%= image_tag('nagano_cake.jpeg') %>
+    </h3>
+
+    <div class="col-xl-7 text-right font-italic">
+      <a class= "d-inline-block m-4">
+       <%= link_to "Items",admin_items_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Customers",admin_customers_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Orders",admin_orders_path %>
+      </a>
+      <a class="d-inline-block m-4">
+       <%= link_to "Genres",admin_genres_path  %>
+      </a>
+       <a class ="d-inline-block m-4">
+        <%= link_to "Log out",destroy_admin_session_path,method: :delete %>
+       </a>
+    </header>
+   </div>
+  </div>
+</div>
