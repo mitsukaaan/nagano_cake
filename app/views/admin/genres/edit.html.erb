@@ -1,7 +1,5 @@
-<h2>ジャンル編集</h2>
+<%= render 'admin/homes/admin_header',homes: @homes %>
+
+<h3>ジャンル編集</h3>
   <%= form_with model:@genre,url:admin_genre_path do |f| %>
-<h2>ジャンル名</h2>
-  <%= f.text_field :name %>
-  
-  <%= f.submit '変更を保存' %>
-  <% end %>
+<a>ジャンル名 <%= f.text_field :name %> <%= f.submit '変更を保存',class:"btn btn-success" %> <% end %></a>

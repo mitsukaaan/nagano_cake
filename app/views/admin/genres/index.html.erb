@@ -1,15 +1,23 @@
-<h1>ジャンル一覧・追加</h1>
+<%= render 'admin/homes/admin_header',homes: @homes %>
 
-<h2>ジャンル名</h2>
-<%= form_with model: @genre,url:admin_genres_path do |f| %>
- <%= f.text_field:name %>
- <%= f.submit '新規登録' %>
-<% end %>
+<h2>ジャンル一覧・追加</h2>
+  <%= form_with model: @genre,url:admin_genres_path do |f| %>
+ <div class ="genre-new">
+  ジャンル名<%= f.text_field:name %><%= f.submit '新規登録',class:"btn btn-success" %>
+  <% end %>
+ </div>
 
-<h2>ジャンル</h2>
+<table class="genre-table">
+ <tr>
+  <th>ジャンル</th>
+  <th></th>
+ </tr>
 
-<% @genres.each do |genre| %>
-
- <%= genre.name %>
- <%= link_to '編集する',edit_admin_genre_path(genre.id) %>
+ <% @genres.each do |genre| %>
+ <tr>
+  <td><%= genre.name %></td>
+  <td><%= link_to '編集する',edit_admin_genre_path(genre.id),class:"btn btn-success" %></td>
+ </tr>
  <% end %>
+
+</table>

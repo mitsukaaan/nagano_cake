@@ -1,23 +1,33 @@
+<%= render 'admin/homes/admin_header',homes: @homes %>
+
 <h2>商品編集</h2>
   <%= form_with model:@item,url:admin_item_path(@item.id),method: :patch do |f| %>
-　<h3>商品画像</h3>
+
+  <div class ="item-edit">
+　 <p>商品画像
 　  <%= f.file_field :image,accept:"image/*" %>
+　 </p>
 
-　<h3>商品名</h3>
+　<p>商品名
 　  <%= f.text_field :name %>
+　</p>
 
-　<h3>商品説明</h3>
+　<p>商品説明
 　  <%= f.text_field :introduction %>
+　</p>
 
-　<h3>ジャンル</h3>
+　<p>ジャンル
 　  <%= f.collection_select(:genre_id,@genre,:id,:name, include_blank: '---選択してください---' ) %>
+　</p>
 
-　<h3>税抜価格</h3>
+　<p>税抜価格
 　  <%= f.text_field :price %>
+　</p>
 
-　<h3>販売ステータス</h3>
-　  <%= f.radio_button:is_active,:true %><%= f.label:"販売中" %>
-　  <%= f.radio_button:is_active,:false %><%= f.label:"販売休止中" %>
-　  <%= f.submit "変更を保存" %>
+　<p>販売ステータス
+　  <%= f.radio_button:is_active,:true %><%= f.label:"販売中" %><%= f.radio_button:is_active,:false %><%= f.label:"販売休止中" %>
+　  <%= f.submit "変更を保存",class:"btn btn-success" %>
+　</p>
 
 <% end %>
+</div>
