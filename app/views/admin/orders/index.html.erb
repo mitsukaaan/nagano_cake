@@ -5,13 +5,4 @@
  <h3>注文個数</h3>
  <h3>注文ステータス</h3>
 
- <% @orders.each do |order| %>
- <%= order.created_at %>
- <%= order.customer.last_name + order.customer.first_name %>
-
-  <% @order_details.each do |order_detail| %>
-  <%= order_detail.amount %>
-  <% end %>
-
- <%= order.status_i18n  %>
- <% end %>
+ 

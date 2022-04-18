@@ -16,13 +16,14 @@
 
  <h3>注文ステータス</h3>
  <%= f.select :status,Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
- <%= f.submit "更新" %>
+ <%= f.submit "更新",class:"btn btn-success" %>
 
  <% end %>
 
 
 
  <% @order.order_details.each do |order_detail| %>
+ <%= form_with model:order_detail,url:admin_order_detail_path,method: :patch do |f| %>
  <h3>商品名</h3>
   <%= order_detail.item.name %>
 
@@ -36,5 +37,7 @@
   <%= (order_detail.price*1.1).floor.to_s(:delimited) %>
 
  <h3>製作ステータス</h3>
-
+  <%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]} %>
+  <%= f.submit "更新",class:"btn btn-success" %>
+ <% end %>
  <% end %>

@@ -10,5 +10,12 @@ ja:
    payment_method:
     credit_card: "クレジットカード"
     transfer: "銀行振込"
+  order_detail:
+   making_status:
+    not_make: "製作不可"
+    make_wait: "製作待ち"
+    make_now: "製作中"
+    make_done: "製作完了"
+
 
 

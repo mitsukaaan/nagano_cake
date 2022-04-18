@@ -9,15 +9,15 @@
   </tr>
 
 　<% @orders.each do |order| %>
-  <tr>
-     <td><%= order.created_at %></td>
-     <td><%= order.customer.last_name + order.customer.first_name %></td>
+ <%= order.created_at %>
+ <%= order.customer.last_name + order.customer.first_name %>
 
-    <%# @orders.order_details.each do |order.detail| %>
-     <td><%#= order_detail.amount %></td>
-    <%# end %>
-     <td><%= order.status_i18n %></td>
-  </tr>
+  <% @order_details.each do |order_detail| %>
+  <%= order_detail.amount %>
   <% end %>
+
+ <%= order.status_i18n  %>
+ <% end %>
+
 </table>
 
