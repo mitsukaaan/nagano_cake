@@ -1,10 +1,10 @@
 <%= render'public/homes/header',homes: @homes %>
 
 
-<%= @customer.last_name + @customer.first_name %>さんの会員情報編集
+<h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
 
 <%= form_with model:@customer,url:admin_customer_path(@customer.id),method: :patch do |f| %>
- 会員id <%= @customer_id %>
+ 会員ID<%= @customer_id %>
  氏名 <%= f.text_field:last_name %><%= f.text_field:first_name %>
  フリガナ<%= f.text_field:last_name_kana %><%= f.text_field:first_name_kana %>
  郵便番号 <%= f.text_field:postal_code %>
@@ -14,4 +14,5 @@
  会員ステータス <%= f.radio_button:is_active,:true %><%= f.label:"有効" %>
                 <%= f.radio_button:is_active,:false %><%= f.label:"退会" %>
 
-<%= f.submit '変更を保存',class ="btn btn-success" %>
+<%= f.submit '変更を保存',class:"btn btn-success" %>
+<% end %>
