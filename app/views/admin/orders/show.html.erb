@@ -26,29 +26,29 @@
 
 
 <table>
-　 <tr>
-　  <th>商品名</th>
-　  <th>単価（税込）</th>
-　  <th>数量</th>
-　  <th>小計</th>
-　  <th>製作ステータス</th>
-　 </tr>
+  <tr>
+   <th>商品名</th>
+   <th>単価（税込）</th>
+   <th>数量</th>
+   <th>小計</th>
+   <th>製作ステータス</th>
+  </tr>
 
  <% @total_price = 0 %>
  <% @order.order_details.each do |order_detail| %>
- <%= form_with model:order_detail,url:admin_order_detail_path,method: :patch do |f| %>
-　 <tr>
-　  <td><%= order_detail.item.name %></td>
-　  <td><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
-　  <td><%= order_detail.amount %></td>
-　  <td><%= ((order_detail.price*1.1)*order_detail.amount).floor.to_s(:delimited) %></td>
-　  <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]} %>
- 　　　　　　 <%= f.submit "更新",class:"btn btn-success" %>
-　　　　 <% end %></td>
-　 </tr>
-　  <% @total_price += ((order_detail.price*1.1)*order_detail.amount).floor %>
-　 <% end %>
-　</table>
+ <%= form_with model:order_detail,url:admin_order_detail_path(order_id: @order.id, id: order_detail.id),method: :patch do |f| %>
+<tr>
+  <td><%= order_detail.item.name %></td>
+  <td><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
+  <td><%= order_detail.amount %></td>
+  <td><%= ((order_detail.price*1.1)*order_detail.amount).floor.to_s(:delimited) %></td>
+  <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]} %>
+  <%= f.submit "更新",class:"btn btn-success" %>
+ <% end %></td>
+</tr>
+<% @total_price += ((order_detail.price*1.1)*order_detail.amount).floor %>
+<% end %>
+</table>
 
 
    <div class ="order-total-price">

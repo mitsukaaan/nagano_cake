@@ -2,20 +2,31 @@
 
  <h1>商品一覧（全<%= @items.count %>件）</h1>
 
-<div class ="item-image">
+ <div class ="item-image">
   <% @items.each do |item| %>
+
+   <% if item.is_active == true %>
    <div>
      <% if item.image.attached? %>
-     <%= image_tag item.image,size:"300x200" %>
+     <%= image_tag item.image,size:"200x150" %>
      <% else %>
-     <%= image_tag 'no image.png',size:"300x200" %>
+     <%= image_tag 'no image.png',size:"200x150" %>
      <% end %>
      <p><%= link_to item.name,"/items/#{item.id}" %></p>
      <p>¥<%= item.price.to_s(:delimited) %></p>
-  </div>
- <% end %>
-</div>
+     <p>販売中</p>
 
-<%= link_to "ログアウト",destroy_customer_session_path,method: :delete %>
+     <% else %>
+     　　<% if item.image.attached? %>
+     　　　<%= image_tag item.image,size:"200x150" %>
+    　　　 <% else %>
+     　　　<%= image_tag 'no image.png',size:"200x150" %>
+     　　<% end %>
+     <p><%= link_to item.name,"/items/#{item.id}" %></p>
+     <p>¥<%= item.price.to_s(:delimited) %></p>
+     <p>売切れ</p>
+    <% end %>
 
-
+   </div>
+  <% end %>
+ </div>
