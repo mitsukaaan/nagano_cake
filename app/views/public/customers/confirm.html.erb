@@ -9,6 +9,6 @@
  <%= form_with model:@customer,url:customers_withdraw_path,method: :patch do |f| %>
  <%= f.hidden_field:is_active,:value => @is_active %>
 
- <%= f.submit "退会する" %>
+ <%= f.submit "退会する", "data-confirm" => "退会します。よろしいですか？" %>
  <% end %>
 </div>

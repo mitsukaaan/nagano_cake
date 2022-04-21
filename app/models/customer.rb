@@ -12,4 +12,7 @@ class Customer < ApplicationRecord
    super && self.is_active
  end
 
+
+
+
 end
