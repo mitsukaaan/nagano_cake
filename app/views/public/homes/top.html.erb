@@ -8,19 +8,18 @@
 
     <h4>新着商品</h4>
      <div class = "item-image">
-   　　　<% @items.each do |item| %>
-   　　　<div>
-   　　　    <%= link_to item_path(item.id) do %>
-　  　     <%= image_tag item.image,size:"200x150" %>
-　  　    <% end %>
-　         <p><%= item.name %></p>
-　   　    <p>¥<%= (item.price).to_s(:delimited) %></p>
-　   　</div>
-       <% end %>
-    </div>
+      <% @items.each do |item| %>
+       <div>
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image,size:"200x150" %>
+        <% end %>
+        <p><%= item.name %></p>
+        <p>¥<%= (item.price).to_s(:delimited) %></p>
+      </div>
+        <% end %>
 
-　<div class ="all-items-show">
-　  <%= link_to "全ての商品を見る",items_path %>
-　</div>
-</div>
+     <div class ="all-items-show">
+      <%= link_to "全ての商品を見る",items_path %>
+     </div>
+    </div>
 
