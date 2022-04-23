@@ -21,7 +21,7 @@ class Public::CartItemsController < ApplicationController
     def destroy_all
         cart_item = current_customer.cart_items.all
         cart_item.destroy_all
-        redirect_to '/items'
+        redirect_to '/cart_items'
     end
 
     def update

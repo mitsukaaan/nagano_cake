@@ -51,8 +51,8 @@
 <a class="cart_items-action">
  <%= link_to "カートを空にする",cart_items_destroy_all_path,method: :delete,"data-confirm" => "カートを空にします。本当によろしいですか？",class:"btn btn-danger" %>
  <%= link_to "買い物を続ける",root_path,class:"btn btn-primary" %>
- <%# if current_customer.cart_items == false  %>
+ <% if current_customer.cart_items.exists?  %>
   <%= link_to "情報入力に進む",new_order_path,class:"btn btn-success" %>
- <%# else %>
- <%# end %>
+ <% else %>
+ <% end %>
 </a>
